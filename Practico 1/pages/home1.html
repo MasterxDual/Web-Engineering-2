@@ -1,0 +1,45 @@
+<!-- El documento es HTML -->
+<!DOCTYPE html>
+<!-- El idioma del contenido es español -->
+<html lang="es">
+    <head>
+        <!-- Insertamos CSS y JS Internos ya que es poco el estilo y la funcionalidad
+        que hay que agregar -->
+        <style>
+            .decorativo-container {
+                /* Permite que elementos hijos (como la imagen decorativa) puedan posicionarse dentro
+                del contenedor sin salirse de él. */
+                position: relative; 
+                width: 100%;
+                /* Flexbox facilita que la imagen se ajuste sin necesidad de márgenes manuales. */
+                display: flex;
+                /* Sin esta propiedad, la imagen quedaría alineada a la izquierda por defecto. */
+                justify-content: flex-start;
+            }
+            .decorativo {
+                width: 100%;
+                height: auto;
+                position: absolute;
+                margin-left: 0;
+                top: -0.5px;
+                border: 1px;
+            }
+        </style>
+
+        <script>
+
+        </script>
+
+        <!-- Permite añadir carácteres especiales -->
+        <meta charset="UTF-8">
+        <!-- Para adaptar la página en móviles -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Insertamos el decorativo con una descripción alternativa -->
+        <div class="decorativo-container">
+            <img class="decorativo" src="/assets/img/Vector.png" alt="Decorativo de mi página">
+        </div>
+        <title>La presentación de la página</title>
+    </head>
+    <body>
+    </body>
+</html>
