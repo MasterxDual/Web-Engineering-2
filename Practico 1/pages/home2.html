@@ -1,28 +1,57 @@
 <!-- El documento es HTML -->
 <!DOCTYPE html>
+<!-- Base para simplificar paths -->
+<base href="/Practico 1/assets/">
 <!-- El idioma del contenido es español -->
 <html lang="es">
     <head>
         <style>
+            body, html {
+                background-color: white;
+                margin: 0;
+                padding: 0;
+            }
+
             #decorativo {
-                width: 100%;
-                height: auto;
-                position: relative;
-                margin-left: 0px;
+                width: 100vw;
+                height: 30vh;
                 top: -0.5px;
                 border: 1px;
-                box-shadow: 0px -4px 4px 0px #00000040;
+                filter: drop-shadow(4px 0px 6px black);
             }
+
+            .container {
+                display: grid;
+                grid-template-rows: 1fr 1fr 1fr;
+                height: 100vh;
+                width: 100vw;
+            }
+
+            .images {
+                display: flex;
+                justify-content: center;
+            }
+
             #logo {
-                
+                position: relative;
+                width: 50%;
+                height: 50%;
+                top: 20%;
             }
+           
         </style>
         <!-- Permite añadir carácteres especiales -->
         <meta charset="UTF-8">
         <!-- Para adaptar la página en móviles -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <img id="decorativo" src="/assets/img/Vector.png" alt="Decorativo de mi página">
-        <img id="logo" src="/assets/img/Logo.svg" alt="Logo de mi página">
+        <div class="container">
+            <div class="images">
+                <img id="decorativo" src="img/Vector.png" alt="Decorativo de mi página">
+            </div>
+            <div class="images">
+                <img id="logo" src="img/Logo.png" alt="Logo de mi página">
+            </div>
+        </div>
         <title>La presentación de la página</title>
     </head>
     <body>
