@@ -8,30 +8,38 @@
         <!-- Para adaptar la página en móviles -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>El login de la web</title>
+        <!-- Añadiendo la página de estilos CSS -->
         <link rel="stylesheet" href="/Practico 1/styles.css">
+        <!-- Añadiendo las fuentes de Google fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     </head>
     <body>
+        <!-- Contenedor que abarca a toda la pagina -->
         <div class="container">
             <!-- Insertamos el logotipo con una descripción alternativa -->
             <div class="logotipo">
                 <img id="logotipo" src="/Practico 1/assets/img/Logo.png" alt="Logotipo de mi página">
             </div>
+            <!-- Formulario para ingresar datos del usuario -->
             <form id="login-form">
+                <!-- Contenedor de los inputs user y password -->
                 <div class="text-input">
                     <input class="text-link" type="text" id="user" required placeholder="Usuario" name="user"/>
                     <input class="text-link" type="password" id="password" minlength="8" placeholder="Contraseña" name="password" required/>
                 </div>
+                <!-- Contenedor de enlace a contraseña olvidada-->
                 <!-- Falta agregar los enlaces a las paginas a mis <a> -->
                 <div class="forgot-pass">
                     <a href="" class="text-link text-remove" id="text1">Olvidaste tu contraseña?</a>
                 </div>
+                <!-- Contenedor del botón de iniciar sesión -->
                 <div class="button">
                     <button id="button" type="submit">Iniciar sesión</button>
                 </div>
+                <!-- Contenedor de enlace a registrar cuenta nueva -->
                 <div class="register">
                     <p id="text2">No tenes una cuenta? - <a href="" id="register" class="text-link">Registrate</a></p>
                 </div>

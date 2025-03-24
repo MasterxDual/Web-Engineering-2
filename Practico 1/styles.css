@@ -1,17 +1,18 @@
+/* Con grid podemos establecer la estructura de nuestra pagina. Definiendo tres columnas en este caso, las primeras dos ocupan 2 fracciones de la pagina, y la tercera 1 fraccion */
 .container {
     display: grid;
     grid-template-rows: 2fr 2fr 1fr;
     height: 100vh;
-    
-    
 }
 
+/* Centramos el logotipo en el centro, teniendo el contenedor que lo envuelve */
 .logotipo {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* Definimos el estilo de los inputs */
 .text-link {
     text-decoration: none;
     font-family: "Lato", sans-serif;
@@ -26,6 +27,8 @@
     font-weight: 500;
 }
 
+/* Con flex podemos definir la orientacion o el espaciado entre elementos dentro de un contenedor. Aquí estamos haciendo que estén orientados en forma de columna y luego que se distribuyan
+en todo el espacio del contenedor que envuelve a todo el formulario de logueo */
 #login-form {
     display: flex;
     flex-direction: column;
@@ -34,6 +37,8 @@
     height: 37.13vh;
 }
 
+/* Con auto hacemos que el ancho y el alto del texto ¿olvidaste tu contraseña? se defina según los demás parámetros que influyen indirectamente en él, ya sea su entorno o 
+sus mismas características */
 .text-remove {
     width: auto;
     height: auto;
@@ -55,11 +60,13 @@
     background: #F7F7F7;
 }
 
+/* Centramos el contenedor que envuelve al botón en el centro horizontalmente. Para alinearlo verticalmente hay que usar align-items */
 .button {
     display: flex;
     justify-content: center;
 }
 
+/* El contenedor que envuelve a ¿olvidaste tu contraseña? lo volvemos flex y lo movemos a la derecha lo más que se pueda con 'end' */
 .forgot-pass {
     display: flex;
     justify-content: end;
@@ -76,9 +83,11 @@
     font-size: 17px;
     line-height: 100%;
     font-weight: bold;
+    /* No está funcionando el hover, revisar */
     transition: background-color 0.5s, transform 0.5s;
 }
 
+/* No está funcionando el hover, revisar */
 #button:hover {
     background-color: #4731a8;
     transform: scale(1.05);
@@ -99,6 +108,7 @@
     font-weight: bold;
 }
 
+/* Definimos una imagen de fondo dentro de los dos inputs de user y password */
 #user {
     background-image: url(assets/img/USER.png);
     background-repeat: no-repeat;
@@ -115,6 +125,7 @@
     
 }
 
+/* Desplaza el texto de los inputs hacia la derecha. Le agrega una sangría */
 input {
     text-indent: 13.8%;
     border: none;
