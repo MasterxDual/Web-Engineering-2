@@ -1,6 +1,29 @@
-#form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 50px;
+.container {
+    display: grid;
+    grid-template-rows: 2fr 2fr 1fr;
+    height: 100vh;
+    
+    
 }
+
+#logotipo {
+    position: relative;
+    top: 30%;
+    left: 30%;
+}
+
+#form-container {
+    display: block;
+}
+
+
+
+.text-link {
+    text-decoration: none;
+    color: #1C1939CC;
+}
+
+#text1 {
+    display: block;
+}
+

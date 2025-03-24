@@ -7,23 +7,23 @@
         <meta charset="UTF-8">
         <!-- Para adaptar la página en móviles -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Insertamos el decorativo con una descripción alternativa -->
-        <div class="logotipo-container">
-            <img class="logotipo" src="/assets/img/Logo.png" alt="Logotipo de mi página">
-        </div>
         <title>El login de la web</title>
+        <link rel="stylesheet" href="/Practico 1/styles.css">
     </head>
     <body>
-        <div id="form-container">
-            <form class="login-form">
-                <div>
+        <div class="container">
+            <!-- Insertamos el logotipo con una descripción alternativa -->
+            <img id="logotipo" src="/Practico 1/assets/img/Logo.png" alt="Logotipo de mi página">
+            <div id="form-container">
+                <form id="login-form">
                     <input type="text" id="user" required placeholder="Usuario" name="user"/>
-                </div>
-                <div>
                     <input type="password" id="password" required placeholder="Contraseña" name="password"/>
-                </div>
-                <button type="submit">Iniciar sesión</button>
-            </form>
+                    <!-- Falta agregar los enlaces a las paginas a mis <a> -->
+                    <a class="text-link" id="text1" href="">Olvidaste tu contraseña?</a>
+                    <button id="button" type="submit">Iniciar sesión</button>
+                    <p>No tenes una cuenta? - <a class="text-link" href="">Registrate</a></p>
+                </form>
+            </div>
         </div>
     </body>
 </html>
