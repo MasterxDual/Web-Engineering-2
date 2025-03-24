@@ -6,24 +6,124 @@
     
 }
 
-#logotipo {
-    position: relative;
-    top: 30%;
-    left: 30%;
+.logotipo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-#form-container {
-    display: block;
-}
-
-
 
 .text-link {
     text-decoration: none;
-    color: #1C1939CC;
+    font-family: "Lato", sans-serif;
+    font-size: 15px;
+    line-height: 25px;
+    letter-spacing: 0px;
+    color: #535353;
+    width: 90vw;
+    height: 5vh;
+    border-radius: 10px;
+    margin: 0.5vh;
+    font-weight: 500;
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 94.44vw;
+    height: 37.13vh;
+}
+
+.text-remove {
+    width: auto;
+    height: auto;
 }
 
 #text1 {
     display: block;
+    color: #1C1939CC;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0px;
 }
 
+#user {
+    background: #303F9F33;
+}
+
+#password {
+    background: #F7F7F7;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+}
+
+.forgot-pass {
+    display: flex;
+    justify-content: end;
+}
+
+#button {
+    width: 92.5vw;
+    height: 7.5vh;
+    background-color: #311B92;
+    border-radius: 10px;
+    margin-top: 9vh;
+    font-family: "Montserrat", sans-serif;
+    color: #FFFFFF;
+    font-size: 17px;
+    line-height: 100%;
+    font-weight: bold;
+    transition: background-color 0.5s, transform 0.5s;
+}
+
+#button:hover {
+    background-color: #4731a8;
+    transform: scale(1.05);
+}
+
+#text2 {
+    color: #1C1939CC;
+    font-size: 15px;
+    line-height: 25px;
+}
+
+.register {
+    display: flex;
+    justify-content: center;
+}
+
+#register {
+    font-weight: bold;
+}
+
+#user {
+    background-image: url(assets/img/USER.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 24px 24px;
+    background-position: 3% center;
+}
+
+#password {
+    background-image: url(assets/img/EMAIL.png);
+    background-repeat: no-repeat;
+    background-position: 3% center;
+    background-size: 24px 24px;
+    
+}
+
+input {
+    text-indent: 13.8%;
+    border: none;
+}
+
+a {
+    transition: background-color 0.5s;
+}
+
+a:hover {
+    background-color: #311B92;
+}
