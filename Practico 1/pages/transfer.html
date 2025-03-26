@@ -11,6 +11,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Añadiendo la página de estilos CSS -->
         <link rel="stylesheet" href="/Practico 1/assets/css/transfer.css">
+        <!-- Añadiendo la pagina de google font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <!-- Añadiendo la fuente Montserrat -->
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <title>Página de Transferencia</title>
     </head>
     <body>
@@ -30,5 +35,24 @@
                 </div>
             </div>
         </header>
+        <main>
+            <section>
+                <h1 id="transfer-heading">Transferir dinero</h1>
+                <div class="actual-money">
+                    <h2>Dinero disponible</h2>
+                    <p>ARS $ 1.236,00</p>
+                </div>
+                <div class="addressee">
+                    <h2>Tipo de destino</h2>
+                    <p>Destinatario único</p>
+                    <button class="button-addresse"></button>
+                    <p>Múltiples destinatarios</p>
+                    <button class="button-addresse"></button>
+                </div>
+                <div class="button">
+                    <button id="button-submit" type="submit">Siguiente</button>
+                </div>
+            </section>
+        </main>
     </body>
 </html>
