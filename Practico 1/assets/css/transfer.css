@@ -66,3 +66,6 @@ Además, definimos el tamaño responsive del contenedor para que no se agrande a
     width: calc((113 / 360) * 100vw);
     height: calc((18 / 800) * 100vh);
 }
+
+/* Hasta acá tenemos el header con sus 4 iconos. Cuidado ya que esto hay que replicarlo en casi todas las demás maquetas. */
+
