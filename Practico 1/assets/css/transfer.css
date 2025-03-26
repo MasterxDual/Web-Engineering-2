@@ -1,0 +1,68 @@
+/* Definimos el tamaño responsive de mi header para que mis 4 imagenes se ubiquen acordemente */
+header {
+    width: 100vw;
+    height: 11.625vh;
+}
+
+/* Definimos las columnas y las filas para crear el area que ordenará mis cuatro imágenes.
+Además, definimos el tamaño responsive del contenedor para que no se agrande automáticamente */
+.header-container {
+    display: grid;
+    grid-template-columns: 50vw 50vw;
+    grid-template-rows: 5.8125vh 5.8125vh;
+    grid-template-areas: 
+    "a b"
+    "c d";
+    width: 100vw;
+    height: 11.625vh;
+}
+
+.time-container {
+    /* Definimos la ubicación de la imagen de tiempo y su contenedor */
+    grid-area: a;
+    /* Definimos los márgenes externos de la imagen para que se mueva un poco a la derecha y abajo */
+    margin-top: calc((17.44 / 800) * 100vh);
+    margin-left: calc((24 / 360) * 100vw);
+}
+
+.arrow-container {
+    /* Definimos la ubicación de la imagen de flecha y su contenedor */
+    grid-area: c;
+    /* Definimos los márgenes externos de la imagen para que se mueva un poco a la derecha y abajo */
+    margin-left: calc((13 / 360) * 100vw);
+    margin-top: calc((13.284 / 800) * 100vh);
+}
+
+.right-icons-container {
+    /* Movemos el icono al lado de la borde derecho de la ventana */
+    display: flex;
+    justify-content: flex-end;
+    /* Definimos la ubicación de la imagen de iconos de celular y su contenedor */
+    grid-area: b;
+    /* Definimos los márgenes externos de la imagen para que se mueva un poco a la izquierda y abajo */
+    margin-top: calc((20.58 / 800) * 100vh);
+    margin-right: calc((36 / 360) * 100vw);
+}
+
+/* Para que la imagen no se agrande cuando use flex en su contenedor padre */
+#right-icons {
+    width: calc((40.19 / 360) * 100vw);
+    height: calc((14.85 / 800) * 100vh);
+}
+
+.wibond-container {
+    /* Movemos el icono al lado de la borde derecho de la ventana */
+    display: flex;
+    justify-content: flex-end;
+    /* Definimos la ubicación de la imagen de iconos de wibond y su contenedor */
+    grid-area: d;
+    /* Definimos los márgenes externos de la imagen para que se mueva un poco a la izquierda y abajo */
+    margin-top: calc((16.28 / 800) * 100vh);
+    margin-right: calc((30 / 360) * 100vw);
+}
+
+/* Para que la imagen no se agrande cuando use flex en su contenedor padre */
+#wibond {
+    width: calc((113 / 360) * 100vw);
+    height: calc((18 / 800) * 100vh);
+}
