@@ -96,20 +96,21 @@ Además, definimos el tamaño responsive del contenedor para que no se agrande a
 }
 
 /* Definimos flex en el contenedor padre section para que flex funcione en sus contenedores hijos */
-.section-container:not(.transfer-heading):not(.addressee) {
+.section-container{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 /* Definimos flex para centrar dos columnas que se ubiquen al centro */
 .actual-money {
-    display: flex;
-    flex-direction: column;
     width: calc((311 / 360) * 100vw);
     height: calc((96 / 800) * 100vh);
     background-color: #5252FF;
+    /* Movemos el contenedor con la descripcion del dinero hacia el centro con flex */
+    align-self: center;
+    position: relative;
+    border-radius: 10px;
 }
 
 /* Definimos el estilo de la letra responsive */
@@ -120,6 +121,10 @@ Además, definimos el tamaño responsive del contenedor para que no se agrande a
     font-weight: 700;
     font-size: 1.5625rem; /* (1 rem = 16px --> (25px * 1rem / 16px)) */
     color: #FFFFFF;
+    position: absolute;
+    top: calc((47 / 96) * 100%);
+    left: calc((17 / 311) * 100%);
+    margin: 0;
 }
 
 /* Definimos el estilo de la letra responsive */
@@ -130,4 +135,43 @@ Además, definimos el tamaño responsive del contenedor para que no se agrande a
     font-weight: 700;
     font-size: 0.75rem; /* (1 rem = 16px --> (12px * 1rem / 16px)) */
     color: #FFFFFF;
+    /* Movemos el texto 'Dinero disponible' hacia su lugar correspondiente */
+    position: absolute;
+    top: calc((17 / 96) * 100%);
+    left: calc((17 / 311) * 100%);
+    /* Le quitamos los márgenes por defecto ya que me cambian la ubicación actual */
+    margin: 0;
+}
+
+.ellipse1 {
+    /* El ancho y el alto deben ser iguales para que sea un círculo, ATENTOS, por eso usamos las mismas unidades */
+    width: calc((188.75 / 360) * 100vw);
+    height: calc((188.75 / 360) * 100vw);
+    background-color: #FFFFFF1A;
+    border-radius: 50%;
+    /* Movemos el elemento tomando como referencia al elemento padre .actual-money. Los valores de top y left están indicados
+    exactamente en el figma. Necesitamos que haya un elemento padre que sea la referencia con position: relative */
+    position: absolute;
+    left: calc((-41.95 / 360) * 100vw);
+    top: calc((-71.3 / 800) * 100vh);
+}
+
+.ellipse2 {
+    /* El ancho y el alto deben ser iguales para que sea un círculo, ATENTOS, por eso usamos las mismas unidades */
+    width: calc((230.7 / 360) * 100vw);
+    height: calc((230.7 / 360) * 100vw);
+    background-color: #FFFFFF1A;
+    border-radius: 50%;
+    /* Movemos el elemento tomando como referencia al elemento padre .actual-money. Los valores de top y left están indicados
+    exactamente en el figma. Necesitamos que haya un elemento padre que sea la referencia con position: relative */
+    position: absolute;
+    left: calc((-69.68 / 360) * 100vw);
+    top: calc((-113.24 / 800) * 100vh);
+}
+
+.addressee {
+    width: calc((315 / 360) * 100vw);
+    height: calc((152 / 800) * 100vh);
+    /* Movemos el contenedor con la descripcion del dinero hacia el centro con flex */
+    align-self: center;
 }
