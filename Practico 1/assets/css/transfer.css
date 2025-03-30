@@ -169,9 +169,67 @@ Además, definimos el tamaño responsive del contenedor para que no se agrande a
     top: calc((-113.24 / 800) * 100vh);
 }
 
-.addressee {
+.addressee-container {
     width: calc((315 / 360) * 100vw);
     height: calc((152 / 800) * 100vh);
     /* Movemos el contenedor con la descripcion del dinero hacia el centro con flex */
     align-self: center;
+}
+
+.destiny-container {
+    width: calc((315 / 360) * 100vw);
+    height: calc((41 /  800) * 100vh);
+    background-color: #1F1F1F;
+    /* Redondeamos solo las esquinas de arriba del rectangulo */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    /* Definimos el contenedor padre del texto 'Tipo de destino' como referencia para mover 
+    con absolute al texto mencionado anteriormente */
+    position: relative;
+    top: calc((16 / 800) * 100vh);
+}
+
+.destiny-container h2 {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem; /* (1 rem = 16px --> (12px * 1rem / 16px)) */
+    color: #FFFFFF;
+    /* Movemos el texto 'Tipo de destino' hacia la derecha */
+    position: absolute;
+    left: calc((17 / 315) * 100%);
+}
+
+.recipients-container {
+    /* Definimos el tamaño del rectangulo que encierra a los tipos de destino (único o múltiple) */
+    width: calc((315 / 360) * 100vw);
+    height: calc((139 / 800) * 100vh);
+    /* Permitimos que el contenedor de 'Destinatario único' y el de 'Múltiples destinatarios' 
+    estén en forma de columna uno abajo del otro, y de paso permitimos que éstos contenedores
+    hijos puedan utilizar propiedades de flex */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Centramos el texto 'Destinatario único' y el botón, y de paso se mueven un poco hacia afuera */
+.sole-recipient-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Convertimos el texto 'Destinatario único' en un bloque que ocupa sólo el espacio en su contenido.
+ Deja de ser un display:block para que el botón pueda estar al lado de éste texto.*/
+.sole-recipient-container p {
+    display: inline-block;
+}
+
+/* Centramos el texto 'Múltiples destinatarios' y el botón, y de paso se mueven un poco hacia afuera */
+.multiple-recipients-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Convertimos el texto 'Múltiples destinatarios' en un bloque que ocupa sólo el espacio en su contenido
+ Deja de ser un display:block para que el botón pueda estar al lado de éste texto. */
+.multiple-recipients-container p {
+    display: inline-block;
 }
