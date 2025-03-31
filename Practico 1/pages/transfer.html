@@ -52,13 +52,31 @@
                     <div class="recipients-container">
                         <div class="sole-recipient-container">
                             <p>Destinatario único</p>
-                            <button class="button-addresse"></button>
+                            <button class="button active"></button>
                         </div>
+                        <hr class="line-break">
                         <div class="multiple-recipients-container">
                             <p>Múltiples destinatarios</p>
-                            <button class="button-addresse"></button>
+                            <button id="btn2" class="button active"></button>
                         </div>
                     </div>
+                    <!-- Definimos el estilo de los dos botones cuando hacemos click en ellos -->
+                    <script>
+                        // Seleccionamos todos los botones con la clase "button". Nos devuelve una lista
+                        var buttons = document.querySelectorAll(".button");
+
+                        /* Si el elemento tiene la clase 'addressee' agregada -> La elimina
+                        Si el elemento no tiene la clase 'addressee' agregada -> La agrega */
+                        function toggleButton() {
+                            this.classList.toggle("active");
+                        }
+
+                        /* Recorremos la lista de botones precargados y los recorremos uno por uno agregando el evento
+                        de hacer un click, aplicando la funcion toggleButton() */
+                        buttons.forEach(button => {
+                            button.addEventListener("click", toggleButton);
+                        });
+                    </script>
                 </div>
                 <div class="button-container">
                     <button id="button-submit" type="submit">Siguiente</button>
