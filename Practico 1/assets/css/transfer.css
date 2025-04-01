@@ -6,6 +6,8 @@ html {
 
 /* Eliminamos los espacios por defecto así está centrado mi header y demás elementos */
 body {
+    width: 100vw;
+    height: 100vh;
     margin: 0;
     padding: 0;
     background-color: #FFFFFF;
@@ -204,7 +206,7 @@ Además, definimos el tamaño responsive del contenedor para que no se agrande a
 .recipients-container {
     /* Definimos el tamaño del rectangulo que encierra a los tipos de destino (único o múltiple) */
     width: calc((315 / 360) * 100vw);
-    height: calc((139 / 800) * 100vh);
+    height: calc((120 / 800) * 100vh);
     /* Permitimos que el contenedor de 'Destinatario único' y el de 'Múltiples destinatarios' 
     estén en forma de columna uno abajo del otro, y de paso permitimos que éstos contenedores
     hijos puedan utilizar propiedades de flex */
@@ -242,7 +244,7 @@ Además, definimos el tamaño responsive del contenedor para que no se agrande a
     border: 2px solid #507CDD; /* Borde inicial */
     cursor: pointer;
     background-color: transparent;
-    transition: all 0.2s ease; /* Añadimos transición para width y height */
+    transition: all 0.5s ease; /* Añadimos transición para width y height */
     position: relative; /* Necesario para posicionar el pseudo-elemento ::after */
     right: calc((-40 / 360) * 100vw);
     top: calc((15 / 800) * 100vh);
@@ -270,7 +272,7 @@ a menos que se le indique con content. Sin esto, el círculo interno no aparecer
     left: 50%;
     transform: translate(-50%, -50%); /* Centra el círculo interno dentro del botón */
     opacity: 0; /* Inicialmente invisible */
-    transition: opacity 0.2s ease; /* Transición suave para la opacidad */
+    transition: opacity 0.5s ease; /* Transición suave para la opacidad */
 }
 
 /* Cuando el botón está activo, hacemos visible el círculo interno */
@@ -299,4 +301,26 @@ a menos que se le indique con content. Sin esto, el círculo interno no aparecer
     width: calc((293 / 360) * 100vw);
     background-color: #00000033;
     color: #00000033;
+}
+
+.button-container {
+    position: relative;
+}
+
+#button-submit {
+    /* Diseño y tamaño */
+    width: calc((285 / 360) * 100vw);
+    height: calc((51.35 / 800) * 100vh);
+    border-radius: 8.56px;
+    background: #311B92;
+    border: 0;
+    /* Ubicamos el botón en su lugar correspondiente */
+    position: absolute;
+    top: calc((315 / 800) * 100vh);
+    left: calc((38 / 360) * 100vw);
+    /* Diseño a la letra 'Siguiente' */
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-size: 0.9093 rem; /* (1 rem = 16px --> (14.55px * 1rem / 16px)) */
+    color: #FFFFFF;
 }
