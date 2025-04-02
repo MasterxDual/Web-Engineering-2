@@ -307,7 +307,7 @@ a menos que se le indique con content. Sin esto, el círculo interno no aparecer
     position: relative;
 }
 
-#button-submit {
+.submit-btn {
     /* Diseño y tamaño */
     width: calc((285 / 360) * 100vw);
     height: calc((51.35 / 800) * 100vh);
@@ -321,6 +321,15 @@ a menos que se le indique con content. Sin esto, el círculo interno no aparecer
     /* Diseño a la letra 'Siguiente' */
     font-family: "Lato", sans-serif;
     font-weight: 700;
-    font-size: 0.9093 rem; /* (1 rem = 16px --> (14.55px * 1rem / 16px)) */
+    font-size: 0.9093rem; /* (1 rem = 16px --> (14.55px * 1rem / 16px)) */
     color: #FFFFFF;
+}
+
+/* Definimos el estilo que queremos que tenga el submit-btn si fue seleccionado al menos un botón circular de los de arriba */
+.submit-btn.selected {
+    width: calc((300 / 360) * 100vw);
+    height: calc((55 / 800) * 100vh);
+    background: #7e63b7;
+    left: calc((32 / 360) * 100vw);
+    cursor: pointer;
 }

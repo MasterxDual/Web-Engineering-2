@@ -52,7 +52,7 @@
                     <div class="recipients-container">
                         <div class="sole-recipient-container">
                             <p>Destinatario único</p>
-                            <button class="button active"></button>
+                            <button id="btn1" class="button active"></button>
                         </div>
                         <hr class="line-break">
                         <div class="multiple-recipients-container">
@@ -60,15 +60,31 @@
                             <button id="btn2" class="button active"></button>
                         </div>
                     </div>
+                </div>
+                <div class="button-container">
+                    <button class="submit-btn selected" type="submit" disabled>Siguiente</button>
+                </div>
                     <!-- Definimos el estilo de los dos botones cuando hacemos click en ellos -->
                     <script>
                         // Seleccionamos todos los botones con la clase "button". Nos devuelve una lista
-                        var buttons = document.querySelectorAll(".button");
+                        let buttons = document.querySelectorAll(".button");
+                        /* Seleccionamos el primer hijo que tenga la clase .submit-btn */
+                        let submitBtn = document.querySelector(".submit-btn");
 
-                        /* Si el elemento tiene la clase 'addressee' agregada -> La elimina
-                        Si el elemento no tiene la clase 'addressee' agregada -> La agrega */
                         function toggleButton() {
+                            /* Si el elemento tiene la clase 'active' agregada -> La elimina
+                            Si el elemento no tiene la clase 'active' agregada -> La agrega */
                             this.classList.toggle("active");
+
+                            /* Con Array.from() convertimos el NodeList 'buttons' en un array para poder usar el método some()
+                            some(callback) recorre el array y devuelve true si al menos un boton está activo  */
+                            let someActiveButton = Array.from(buttons).some(button => button.classList.contains("active"));
+
+                            /* Si hay algún botón activo => eliminamos o agregamos la clase 'selected' si es que no está o está respectivamente */
+                            submitBtn.classList.toggle("selected", someActiveButton);
+                            
+                            // Deshabilitamos el botón si no hay ninguno activo
+                            submitBtn.disabled = !someActiveButton; 
                         }
 
                         /* Recorremos la lista de botones precargados y los recorremos uno por uno agregando el evento
@@ -77,10 +93,6 @@
                             button.addEventListener("click", toggleButton);
                         });
                     </script>
-                </div>
-                <div class="button-container">
-                    <button id="button-submit" type="submit">Siguiente</button>
-                </div>
             </section>
         </main>
     </body>
