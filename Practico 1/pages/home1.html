@@ -16,23 +16,45 @@
                 width: calc((359.5 / 360) * 100vw);
                 height: calc((203.86 / 800) * 100vh);
                 border: 1px;
+                /* Inicialmente el decorativo no está, durante 2 segundos aparece lentamente con una transición suave */
+                opacity: 0;
+                transition: opacity 2s ease-in-out;
+            }
+
+            /* Muestra el decorativo una vez que la clase se agrega apenas se abre la página */
+            #decorativo.show {
+                opacity: 1;
             }
         </style>
-
-        <script>
-
-        </script>
 
         <!-- Permite añadir carácteres especiales -->
         <meta charset="UTF-8">
         <!-- Para adaptar la página en móviles -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>La presentación de la página</title>
+        <title>La presentación de la página - Paso 1</title>
     </head>
     <body>
         <!-- Insertamos el decorativo con una descripción alternativa -->
         <div id="decorativo-container">
             <img id="decorativo" src="/Practico 1/assets/img/Vector.png" alt="Decorativo de mi página">
         </div>
+
+        <script>
+            /* Se ejecuta cuando el DOM (estructura HTML) ya está completamente cargado, pero antes de que se carguen
+            completamente los recursos como imágenes o estilos CSS. 
+            addEventListener recibe element.addEventListener(type, listener [, options]) [ver internet para mas info]*/
+            window.addEventListener("DOMContentLoaded", () => {
+                const decorativo = document.getElementById("decorativo");
+                // Se agrega la clase "show" al decorativo para que aparezca
+                decorativo.classList.add("show");
+
+                // Espera 3 segundos y cambia de página
+                /* Esta funcion recibe una funcion anónima flecha: () => { body de la funcion } */
+                setTimeout(() => {
+                    // Cambia a la página de inicio
+                    window.location.href = "/Practico 1/pages/home2.html";
+                }, 3000); // 3000 milisegundos = 3 segundos
+            });
+        </script>
     </body>
 </html>

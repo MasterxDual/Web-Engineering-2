@@ -17,6 +17,9 @@
                 height: calc((203.86 / 800) * 100vh);
                 border: 1px;
                 filter: drop-shadow(4px 0px 6px black);
+                /* Hacemos que el decorativo también aparezca lentamente (para que el sombreado se agregue de a poco) */
+                opacity: 0;
+                transition: opacity 0.5s ease-in-out;
             }
 
             /* Definimos grid para establecer tres columnas de la página que ocupen el total de la altura con grid-template-rows  */
@@ -38,20 +41,36 @@
             /* Elegimos al segundo class .images 
             Esto funciona <=> .images es del mismo tipo de elemento div y es el segundo div hijo dentro de .container */
             .container .images:nth-of-type(2) {
+                /* Centramos verticalmente la imagen */
                 align-items: center;
             }
             
             #logo {
                 width: calc((255 / 360) * 100vw);
                 height: calc((187 / 800) * 100vh);
+                /* Inicialmente el logotipo no está, le agregamos transición suave de 1.5 segundos */
+                opacity: 0;
+                transition: opacity 1.5s ease-in-out;
+            }
+
+            #logo.show, #decorativo.show {
+                /* El logotipo y el decorativo aparecen finalmente */
+                opacity: 1;
             }
            
+            body.fade-out {
+                /* Agregamos un efecto de fade-out cuando se redirige a la página de login para que desaparezca lentamente 
+                toda la pantalla*/
+                opacity: 0;
+                transition: opacity 1.5s ease-out;
+            }
+
         </style>
         <!-- Permite añadir carácteres especiales -->
         <meta charset="UTF-8">
         <!-- Para adaptar la página en móviles -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>La presentación de la página</title>
+        <title>La presentación de la página - Paso 2</title>
     </head>
     <body>
         <div class="container">
@@ -62,5 +81,32 @@
                 <img id="logo" src="img/Logo.png" alt="Logo de mi página">
             </div>
         </div>
+
+        <script>
+            // Se ejecuta cuando el DOM está completamente cargado (explicado en home1.html)
+            window.addEventListener("DOMContentLoaded", () => {
+                const decorativo = document.getElementById("decorativo");
+                const logo = document.getElementById("logo");
+                
+                /* El decorativo aparece instantáneamente */
+                decorativo.classList.add("show");
+
+                /* El logotipo aparece a los 1.5 segundos de haber aparecido el decorativo */
+                setTimeout(() => {
+                    logo.classList.add("show");
+
+                    /* Luego de 5 segundos de haber mostrado todo, te redirecciona a la página de login */
+                    setTimeout(() => {
+                        /* Para que la pagina home desaparezca lentamente */
+                        document.body.classList.add("fade-out");
+
+                        // Esperamos a que la transición de salida termine antes de redirigir
+                        setTimeout(() => {
+                            window.location.href = "/Practico 1/pages/login.html";
+                        }, 1500); // Coincide con el tiempo de fade-out
+                    }, 5000);
+                }, 1500); //Delay para mostrar el logotipo
+            });
+        </script>
     </body>
 </html>
