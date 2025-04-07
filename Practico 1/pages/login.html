@@ -43,6 +43,16 @@
                 <div class="register">
                     <p id="text2">No tenes una cuenta? - <a href="" id="register" class="text-link">Registrate</a></p>
                 </div>
+
+                <script>
+                    /* Una vez que la pantalla aparece => realiza el efecto */
+                    window.addEventListener("DOMContentLoaded", () => {
+                        setTimeout(() => {
+                            /* Le agregamos el efecto lento de entrada a la página del login */
+                            document.body.classList.add("fade-in");
+                        }, 1500); //Delay para mostrar la página del login
+                    });
+                </script>
             </form>
         </div>
     </body>

@@ -1,3 +1,14 @@
+/* Inicialmente la pantalla de login está oculta, utilizando transition definimos el efecto de fade-in para que aparezca lentamente */
+body {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+/* Aparece la pantalla una vez tiene la clase fade-in agregada con JavaScript */
+body.fade-in {
+    opacity: 1;
+}
+
 /* Con grid podemos establecer la estructura de nuestra pagina. Definiendo tres columnas en este caso, las primeras dos ocupan 2 fracciones de la pagina, y la tercera 1 fraccion */
 .container {
     display: grid;
