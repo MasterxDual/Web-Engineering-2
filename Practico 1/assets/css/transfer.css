@@ -201,12 +201,13 @@ Además, definimos el tamaño responsive del contenedor para que no se agrande a
     /* Movemos el texto 'Tipo de destino' hacia la derecha */
     position: absolute;
     left: calc((17 / 315) * 100%);
+    top: calc((4 / 46.31) * 100%);
 }
 
 .recipients-container {
     /* Definimos el tamaño del rectangulo que encierra a los tipos de destino (único o múltiple) */
     width: calc((315 / 360) * 100vw);
-    height: calc((120 / 800) * 100vh);
+    height: calc((105 / 800) * 100vh);
     /* Permitimos que el contenedor de 'Destinatario único' y el de 'Múltiples destinatarios' 
     estén en forma de columna uno abajo del otro, y de paso permitimos que éstos contenedores
     hijos puedan utilizar propiedades de flex */
@@ -223,6 +224,8 @@ Además, definimos el tamaño responsive del contenedor para que no se agrande a
 .sole-recipient-container {
     display: flex;
     justify-content: space-around;
+    position: relative;
+    top: calc((5 / 118.63) * 100%);
 }
 
 /* Convertimos el texto 'Destinatario único' en un bloque que ocupa sólo el espacio en su contenido.
@@ -301,6 +304,8 @@ a menos que se le indique con content. Sin esto, el círculo interno no aparecer
     width: calc((293 / 360) * 100vw);
     background-color: #00000033;
     color: #00000033;
+    position: relative;
+    top: calc((5 / 118.63) * 100%);
 }
 
 .button-container {
