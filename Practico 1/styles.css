@@ -94,13 +94,17 @@ sus mismas características */
     font-size: 17px;
     line-height: 100%;
     font-weight: bold;
-    /* No está funcionando el hover, revisar */
-    transition: background-color 0.5s, transform 0.5s;
+    /* Aplica los efectos de color de fondo y de agrandar el botón en 1 milisegundo */
+    transition: background-color 1ms, transform 1ms;
+    /* El estilo del cursos cambia cuando apuntamos al botón */
+    cursor: pointer;
 }
 
-/* No está funcionando el hover, revisar */
-#button:hover {
+/* Utilizamos la pseudo-clase active para que cuando el usuario haga click en el botón, ocurra el efecto de aquí abajo
+No utilizamos la pseudo-clase hover porque en dispositivos móviles no existe un cursos que pase por encima del botón, ya que es táctil */
+#button:active {
     background-color: #4731a8;
+    /* Agrandamos el botón en un 0.05 % */
     transform: scale(1.05);
 }
 
@@ -140,12 +144,4 @@ sus mismas características */
 input {
     text-indent: 13.8%;
     border: none;
-}
-
-a {
-    transition: background-color 0.5s;
-}
-
-a:hover {
-    background-color: #311B92;
 }
