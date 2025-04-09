@@ -1,3 +1,9 @@
+html {
+    /* Definimos el tamaño de la fuente por defecto para hacer responsive la letra (falta definir el tamaño particular de cada
+    texto en unidades rem */
+    font-size: 16px;
+}
+
 /* Inicialmente la pantalla de login está oculta, utilizando transition definimos el efecto de fade-in para que aparezca lentamente */
 body {
     opacity: 0;
@@ -27,7 +33,7 @@ body.fade-in {
 .text-link {
     text-decoration: none;
     font-family: "Lato", sans-serif;
-    font-size: 15px;
+    font-size: 0.9375rem; /* (1 rem = 16px --> (15px * 1rem / 16px)) */
     line-height: 25px;
     letter-spacing: 0px;
     color: #535353;
@@ -36,6 +42,12 @@ body.fade-in {
     border-radius: 10px;
     margin: 0.5vh;
     font-weight: 500;
+}
+
+/* Definimos el estilo del mensaje de error que aparece si no ingresamos un email en el usuario */
+#user-error {
+    color: red;
+    font-size: 0.75rem; /* (1 rem = 16px --> (12px * 1rem / 16px)) */
 }
 
 /* Con flex podemos definir la orientacion o el espaciado entre elementos dentro de un contenedor. Aquí estamos haciendo que estén orientados en forma de columna y luego que se distribuyan
@@ -58,7 +70,7 @@ sus mismas características */
 #text1 {
     display: block;
     color: #1C1939CC;
-    font-size: 12px;
+    font-size: 0.75rem; /* (1 rem = 16px --> (12px * 1rem / 16px)) */
     line-height: 100%;
     letter-spacing: 0px;
 }
@@ -91,7 +103,7 @@ sus mismas características */
     margin-top: 9vh;
     font-family: "Montserrat", sans-serif;
     color: #FFFFFF;
-    font-size: 17px;
+    font-size: 1.0625rem; /* (1 rem = 16px --> (17px * 1rem / 16px)) */
     line-height: 100%;
     font-weight: bold;
     /* Aplica los efectos de color de fondo y de agrandar el botón en 1 milisegundo */
@@ -110,7 +122,7 @@ No utilizamos la pseudo-clase hover porque en dispositivos móviles no existe un
 
 #text2 {
     color: #1C1939CC;
-    font-size: 15px;
+    font-size: 0.9375rem; /* (1 rem = 16px --> (15px * 1rem / 16px)) */
     line-height: 25px;
 }
 

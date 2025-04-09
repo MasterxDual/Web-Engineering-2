@@ -27,8 +27,9 @@
             <form id="login-form">
                 <!-- Contenedor de los inputs user y password -->
                 <div class="text-input">
-                    <input class="text-link" type="text" id="user" required placeholder="Usuario" name="user"/>
+                    <input class="text-link" type="text" id="user" required placeholder="Correo electrónico" name="user"/>
                     <input class="text-link" type="password" id="password" minlength="8" placeholder="Contraseña" name="password" required/>
+                    <span id="user-error"></span>
                 </div>
                 <!-- Contenedor de enlace a contraseña olvidada-->
                 <!-- Falta agregar los enlaces a las paginas a mis <a> -->
@@ -45,13 +46,32 @@
                 </div>
 
                 <script>
-                    /* Una vez que la pantalla aparece => realiza el efecto */
                     window.addEventListener("DOMContentLoaded", () => {
                         setTimeout(() => {
                             /* Le agregamos el efecto lento de entrada a la página del login */
                             document.body.classList.add("fade-in");
                         }, 1500); //Delay para mostrar la página del login
                     });
+
+                    // Definimos el evento para enviar el formulario utilizando la function(event)
+                    document.getElementById("login-form").addEventListener("submit", function(event) {
+                        const emailInput = document.getElementById("user");
+                        const errorSpan = document.getElementById("user-error");
+                        // Recogemos el valor que ingrese en el input user
+                        const email = emailInput.value;
+                        /* Expresión regular para verificar si es un email lo que se escribió en el input user */
+                        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                        /* La funcion test() devuelve True si el email coincide con el patrón de regex */
+                        if(!regex.test(email)) {
+                            event.preventDefault(); // Evitamos que el formulario se envíe
+                            // Si no es un email, mostramos el mensaje de error
+                            errorSpan.textContent = "Por favor, ingresa un correo electrónico válido."; 
+                        } else {
+                            // No mostramos ningún mensaje de error, evita que se produzca el evento de submit
+                            errorSpan.textContent = ""; 
+                        }
+                    });                    
                 </script>
             </form>
         </div>
