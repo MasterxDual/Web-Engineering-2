@@ -38,7 +38,8 @@
                 </div>
                 <!-- Contenedor del botón de iniciar sesión -->
                 <div class="button">
-                    <button id="button" type="submit">Iniciar sesión</button>
+                    <!-- Botón desabilitado inicialmente hasta que ingresemos user y password como debe ser -->
+                    <button id="button" type="submit" disabled>Iniciar sesión</button>
                 </div>
                 <!-- Contenedor de enlace a registrar cuenta nueva -->
                 <div class="register">
@@ -47,18 +48,36 @@
 
                 <script>
                     window.addEventListener("DOMContentLoaded", () => {
+                        const userInput = document.getElementById("user");
+                        const passwordInput = document.getElementById("password");
+                        const submitButton = document.getElementById("button");
+
                         setTimeout(() => {
                             /* Le agregamos el efecto lento de entrada a la página del login */
                             document.body.classList.add("fade-in");
                         }, 1500); //Delay para mostrar la página del login
+
+                        /* Verifica que ambos inputs (user y pass) estén completos para activar el botón de submit */
+                        function checkInputs() {
+                            if(userInput.value.trim() !== "" && passwordInput.value.trim() !== "") {
+                                submitButton.disabled = false; // Habilitamos el botón
+                            } else {
+                                submitButton.disabled = true; // Deshabilitamos el botón
+                            }
+                        }
+
+                        /* Añade un evento a ambos inputs para verificar cuando haya algún cambio en ambos inputs, sino no podremos verificar en el momento exacto en que estamos 
+                        escribiendo algo en cualquiera de los dos inputs */
+                        userInput.addEventListener("input", checkInputs);
+                        passwordInput.addEventListener("input", checkInputs);
                     });
 
                     // Definimos el evento para enviar el formulario utilizando la function(event)
                     document.getElementById("login-form").addEventListener("submit", function(event) {
-                        const emailInput = document.getElementById("user");
+                        const userInput = document.getElementById("user");
                         const errorSpan = document.getElementById("user-error");
                         // Recogemos el valor que ingrese en el input user
-                        const email = emailInput.value;
+                        const email = userInput.value;
                         /* Expresión regular para verificar si es un email lo que se escribió en el input user */
                         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -67,6 +86,11 @@
                             event.preventDefault(); // Evitamos que el formulario se envíe
                             // Si no es un email, mostramos el mensaje de error
                             errorSpan.textContent = "Por favor, ingresa un correo electrónico válido."; 
+
+                            // Limpiamos el mensaje de error después de 3 segundos
+                            setTimeout(() => {
+                                errorSpan.textContent = ""; 
+                            }, 3000);
                         } else {
                             // No mostramos ningún mensaje de error, evita que se produzca el evento de submit
                             errorSpan.textContent = ""; 

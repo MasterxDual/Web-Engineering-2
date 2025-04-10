@@ -120,6 +120,12 @@ No utilizamos la pseudo-clase hover porque en dispositivos móviles no existe un
     transform: scale(1.05);
 }
 
+/* Cuando el botón esté desactivado => no se puede clickear el mismo (no ocurren efectos) 
+Esto quiere decir que no se podrá clickear el botón hasta que los dos campos (user y pass) hayan sido ingresados*/
+#button:disabled {
+    pointer-events: none;
+}
+
 #text2 {
     color: #1C1939CC;
     font-size: 0.9375rem; /* (1 rem = 16px --> (15px * 1rem / 16px)) */
