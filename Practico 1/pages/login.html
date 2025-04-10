@@ -47,10 +47,18 @@
                 </div>
 
                 <script>
+                    /* Declaramos únicamente, ya que todavía no se cargó la pagina (DOMContentLoaded) y obtendremos null */
+                    let userInput, passwordInput, submitButton, errorSpan;
+
                     window.addEventListener("DOMContentLoaded", () => {
-                        const userInput = document.getElementById("user");
-                        const passwordInput = document.getElementById("password");
-                        const submitButton = document.getElementById("button");
+                        userInput = document.getElementById("user");
+                        passwordInput = document.getElementById("password");
+                        submitButton = document.getElementById("button");
+                        errorSpan = document.getElementById("user-error");
+                        /* Expresión regular para verificar si es un email lo que se escribió en el input user 
+                        Esta variable la utilizaremos solamente una vez y no redefiniremos su valor, por eso la definimos
+                        como const y no let. */
+                        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
                         setTimeout(() => {
                             /* Le agregamos el efecto lento de entrada a la página del login */
@@ -70,32 +78,54 @@
                         escribiendo algo en cualquiera de los dos inputs */
                         userInput.addEventListener("input", checkInputs);
                         passwordInput.addEventListener("input", checkInputs);
+
+                        // Definimos el evento para enviar el formulario utilizando la function(event)
+                        document.getElementById("login-form").addEventListener("submit", function(event) {
+                            /* Estos dos valores son recogidos cuando el evento submit (hacer click al boton y esté habilitado) 
+                            ocurra. Ya que el preventDefault está impidiendo que se active el submit hasta que ambos inputs
+                            sean correctos */
+                            // Recogemos el valor que ingrese en el input user
+                            const email = userInput.value;
+                            // Recogemos el valor que ingrese en el input password
+                            const password = passwordInput.value
+                            
+    
+                            /* La funcion test() devuelve True si el email coincide con el patrón de regex */
+                            if(!regex.test(email)) {
+                                event.preventDefault(); // Evitamos que el formulario se envíe
+                                // Si no es un email, mostramos el mensaje de error
+                                errorSpan.textContent = "Por favor, ingresa un correo electrónico válido."; 
+    
+                                // Limpiamos el mensaje de error después de 3 segundos
+                                setTimeout(() => {
+                                    errorSpan.textContent = ""; 
+                                }, 3000);
+                            } else {
+                                /* Si y sólo si previamente el botón fue habilitado (user y password fueron ingresados) y el email es válido => Borra el mensaje de error y además guarda
+                                en localStorage el user y el token */
+                                // No mostramos ningún mensaje de error, evita que se produzca el evento de submit
+                                errorSpan.textContent = ""; 
+    
+                                /* /* Guardamos los inputs user y password en el localStorage
+                                Esta manera no es segura ya que estaríamos dejando vulnerable nuestra contraseña para quien esté en el mismo navegador
+                                localStorage.setItem("user", email);
+                                localStorage.setItem("password", document.getElementById("password").value); //Esto no es seguro en aplicaciones reales */
+    
+                                /* Realizamos lo mismo pero simulando seguridad a través de un token */
+                                // Simulamos un "token" generado a partir de email + pass + timestamp
+                                // btoa convierte un string a base64. Es una codificación, no encriptación real. Sirve para esconder ligeramente los datos, pero no es seguro para producción.
+                                const token = btoa(email + ":" + password + ":" + Date.now());
+    
+                                /* Guardamos los inputs user y token de la password en el localStorage */
+                                localStorage.setItem("user", email)
+                                localStorage.setItem("password", token)
+                                
+                                // Redirigimos a la página de transferencia (no funciona)
+                                window.location.href = "/Practico 1/pages/transfer.html";
+                            }
+                        });                    
                     });
 
-                    // Definimos el evento para enviar el formulario utilizando la function(event)
-                    document.getElementById("login-form").addEventListener("submit", function(event) {
-                        const userInput = document.getElementById("user");
-                        const errorSpan = document.getElementById("user-error");
-                        // Recogemos el valor que ingrese en el input user
-                        const email = userInput.value;
-                        /* Expresión regular para verificar si es un email lo que se escribió en el input user */
-                        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-                        /* La funcion test() devuelve True si el email coincide con el patrón de regex */
-                        if(!regex.test(email)) {
-                            event.preventDefault(); // Evitamos que el formulario se envíe
-                            // Si no es un email, mostramos el mensaje de error
-                            errorSpan.textContent = "Por favor, ingresa un correo electrónico válido."; 
-
-                            // Limpiamos el mensaje de error después de 3 segundos
-                            setTimeout(() => {
-                                errorSpan.textContent = ""; 
-                            }, 3000);
-                        } else {
-                            // No mostramos ningún mensaje de error, evita que se produzca el evento de submit
-                            errorSpan.textContent = ""; 
-                        }
-                    });                    
                 </script>
             </form>
         </div>
