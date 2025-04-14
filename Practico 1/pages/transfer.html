@@ -52,17 +52,17 @@
                     <div class="recipients-container">
                         <div class="sole-recipient-container">
                             <p>Destinatario único</p>
-                            <button id="btn1" class="button active"></button>
+                            <button id="btn1" class="button"></button>
                         </div>
                         <hr class="line-break">
                         <div class="multiple-recipients-container">
                             <p>Múltiples destinatarios</p>
-                            <button id="btn2" class="button active"></button>
+                            <button id="btn2" class="button"></button>
                         </div>
                     </div>
                 </div>
                 <div class="button-container">
-                    <button class="submit-btn selected" type="submit" disabled>Siguiente</button>
+                    <button class="submit-btn" type="submit" disabled>Siguiente</button>
                 </div>
                     <!-- Definimos el estilo de los dos botones cuando hacemos click en ellos -->
                     <script>
@@ -71,26 +71,53 @@
                         /* Seleccionamos el primer hijo que tenga la clase .submit-btn */
                         let submitBtn = document.querySelector(".submit-btn");
 
-                        function toggleButton() {
-                            /* Si el elemento tiene la clase 'active' agregada -> La elimina
-                            Si el elemento no tiene la clase 'active' agregada -> La agrega */
-                            this.classList.toggle("active");
-
+                        function toggleExclusiveButton(event) {
+                            /* event es el objeto del evento que se genera automáticamente cuando ocurre una interacción con el DOM, como un clic (click), teclado (keydown), etc.*/
+                            /* event.currentTarget: el elemento que escucha el evento (el botón completo en este caso). Es el elemento al que se le asignó el evento. */
+                            const clickedButton = event.currentTarget;
+                            
+                            /* Si el botón tenía el circulo interno => se lo elimina */
+                            if(clickedButton.classList.contains("active")) {
+                                clickedButton.classList.remove("active");
+                            } else {
+                                /* En el caso que el botón clickeado no haya tenido el circulo interno la vez que fue clickeado */
+                                // Si alguno de los dos botones es clickeado => elimina el botón circular interno de ambos botones
+                                buttons.forEach(button => button.classList.remove("active"));
+                                /* Activa el botón circular que fue clickeado */
+                                clickedButton.classList.add("active");
+                            }
+                            /* Verificamos previamente si quedó algún botón activo para poder activar el botón de Siguiente */
                             /* Con Array.from() convertimos el NodeList 'buttons' en un array para poder usar el método some()
                             some(callback) recorre el array y devuelve true si al menos un boton está activo  */
-                            let someActiveButton = Array.from(buttons).some(button => button.classList.contains("active"));
+                            const someActiveButton = Array.from(buttons).some(button => button.classList.contains("active"));
 
                             /* Si hay algún botón activo => eliminamos o agregamos la clase 'selected' si es que no está o está respectivamente */
                             submitBtn.classList.toggle("selected", someActiveButton);
                             
+                            /* Ahora activamos el botón de Continuar si encontró algún botón circular clickeado */
+                            submitBtn.disabled = !someActiveButton;
+
+                            /* Toda esta funcionalidad era activar los botones, permitiendo que se activen uno o ambos a la vez
+                            Esto no tiene sentido, solo se debe permitir que un boton circular esté activado a la vez */
+                            /* Si el elemento tiene la clase 'active' agregada -> La elimina
+                            Si el elemento no tiene la clase 'active' agregada -> La agrega */
+                            // this.classList.toggle("active");
+
+                            /* Con Array.from() convertimos el NodeList 'buttons' en un array para poder usar el método some()
+                            some(callback) recorre el array y devuelve true si al menos un boton está activo  */
+                            // let someActiveButton = Array.from(buttons).some(button => button.classList.contains("active"));
+
+                            /* Si hay algún botón activo => eliminamos o agregamos la clase 'selected' si es que no está o está respectivamente */
+                            // submitBtn.classList.toggle("selected", someActiveButton);
+                            
                             // Deshabilitamos el botón si no hay ninguno activo
-                            submitBtn.disabled = !someActiveButton; 
+                            // submitBtn.disabled = !someActiveButton; 
                         }
 
                         /* Recorremos la lista de botones precargados y los recorremos uno por uno agregando el evento
                         de hacer un click, aplicando la funcion toggleButton() */
                         buttons.forEach(button => {
-                            button.addEventListener("click", toggleButton);
+                            button.addEventListener("click", toggleExclusiveButton);
                         });
                     </script>
             </section>
