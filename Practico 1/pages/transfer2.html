@@ -1,0 +1,132 @@
+<!-- El documento es HTML -->
+<!DOCTYPE html>
+<!-- Base para simplificar paths -->
+<base href="/Practico 1/assets/img/">
+<!-- El idioma del contenido es español -->
+<html lang="es">
+    <head>
+        <!-- Permite añadir carácteres especiales -->
+        <meta charset="UTF-8">
+        <!-- Para adaptar la página en móviles -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Añadiendo la página de estilos CSS -->
+        <link rel="stylesheet" href="/Practico 1/assets/css/transfer.css">
+        <!-- Añadiendo la pagina de google font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <!-- Añadiendo la fuente Montserrat -->
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <title>Página de Transferencia</title>
+    </head>
+    <body>
+        <header>
+            <div class="header-container">
+                <div class="arrow-container">
+                    <img src="arrow.png" alt="Flecha">
+                </div>
+                <div class="time-container">
+                    <img src="Device/Time.png" alt="Hora actual">
+                </div>
+                <div class="right-icons-container">
+                    <img id="right-icons" src="Device/righticons.png" alt="Iconos de celular">
+                </div>
+                <div class="wibond-container">
+                    <img id="wibond" src="wibond.png" alt="Logo de Wibond">
+                </div>
+            </div>
+        </header>
+        <main>
+            <!-- Esta sección contiene todo los elementos de la página sin contar el header -->
+            <section class="section-container">
+                <h1 class="transfer-heading">Transferir dinero</h1>
+                <ol class="stepper">
+                    <!-- La clase active define la coloración en azul que tiene el primer circulo con el lápiz -->
+                    <li class="step step1"></li>
+                    <li class="step step2"></li>
+                    <li class="step step3"></li>
+                </ol>
+                <div class="actual-money">
+                    <div class="ellipse1"></div>
+                    <div class="ellipse2"></div>
+                    <h2>Dinero disponible</h2>
+                    <p>ARS $ 1.236,00</p>
+                </div>
+                <div class="addressee-container">
+                    <div class="destiny-container">
+                        <h2>Tipo de destino</h2>
+                    </div>
+                    <div class="recipients-container">
+                        <div class="sole-recipient-container">
+                            <p>Destinatario único</p>
+                            <button id="btn1" class="button"></button>
+                        </div>
+                        <hr class="line-break">
+                        <div class="multiple-recipients-container">
+                            <p>Múltiples destinatarios</p>
+                            <button id="btn2" class="button"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-container">
+                    <button class="submit-btn" type="submit" disabled>Siguiente</button>
+                </div>
+                    <!-- Definimos el estilo de los dos botones cuando hacemos click en ellos -->
+                    <script>
+                        // Seleccionamos todos los botones con la clase "button". Nos devuelve una lista
+                        let buttons = document.querySelectorAll(".button");
+                        /* Seleccionamos el primer hijo que tenga la clase .submit-btn */
+                        let submitBtn = document.querySelector(".submit-btn");
+
+                        function toggleExclusiveButton(event) {
+                            /* event es el objeto del evento que se genera automáticamente cuando ocurre una interacción con el DOM, como un clic (click), teclado (keydown), etc.*/
+                            /* event.currentTarget: el elemento que escucha el evento (el botón completo en este caso). Es el elemento al que se le asignó el evento. */
+                            const clickedButton = event.currentTarget;
+                            
+                            /* Si el botón tenía el circulo interno => se lo elimina */
+                            if(clickedButton.classList.contains("active")) {
+                                clickedButton.classList.remove("active");
+                            } else {
+                                /* En el caso que el botón clickeado no haya tenido el circulo interno la vez que fue clickeado */
+                                // Si alguno de los dos botones es clickeado => elimina el botón circular interno de ambos botones
+                                buttons.forEach(button => button.classList.remove("active"));
+                                /* Activa el botón circular que fue clickeado */
+                                clickedButton.classList.add("active");
+                            }
+                            /* Verificamos previamente si quedó algún botón activo para poder activar el botón de Siguiente */
+                            /* Con Array.from() convertimos el NodeList 'buttons' en un array para poder usar el método some()
+                            some(callback) recorre el array y devuelve true si al menos un boton está activo  */
+                            const someActiveButton = Array.from(buttons).some(button => button.classList.contains("active"));
+
+                            /* Si hay algún botón activo => eliminamos o agregamos la clase 'selected' si es que no está o está respectivamente */
+                            submitBtn.classList.toggle("selected", someActiveButton);
+                            
+                            /* Ahora activamos el botón de Continuar si encontró algún botón circular clickeado */
+                            submitBtn.disabled = !someActiveButton;
+
+                            /* Toda esta funcionalidad era activar los botones, permitiendo que se activen uno o ambos a la vez
+                            Esto no tiene sentido, solo se debe permitir que un boton circular esté activado a la vez */
+                            /* Si el elemento tiene la clase 'active' agregada -> La elimina
+                            Si el elemento no tiene la clase 'active' agregada -> La agrega */
+                            // this.classList.toggle("active");
+
+                            /* Con Array.from() convertimos el NodeList 'buttons' en un array para poder usar el método some()
+                            some(callback) recorre el array y devuelve true si al menos un boton está activo  */
+                            // let someActiveButton = Array.from(buttons).some(button => button.classList.contains("active"));
+
+                            /* Si hay algún botón activo => eliminamos o agregamos la clase 'selected' si es que no está o está respectivamente */
+                            // submitBtn.classList.toggle("selected", someActiveButton);
+                            
+                            // Deshabilitamos el botón si no hay ninguno activo
+                            // submitBtn.disabled = !someActiveButton; 
+                        }
+
+                        /* Recorremos la lista de botones precargados y los recorremos uno por uno agregando el evento
+                        de hacer un click, aplicando la funcion toggleButton() */
+                        buttons.forEach(button => {
+                            button.addEventListener("click", toggleExclusiveButton);
+                        });
+                    </script>
+            </section>
+        </main>
+    </body>
+</html>
