@@ -207,7 +207,7 @@ Además, definimos el tamaño responsive del contenedor para que no se agrande a
 .recipients-container {
     /* Definimos el tamaño del rectangulo que encierra a los tipos de destino (único o múltiple) */
     width: calc((315 / 360) * 100vw);
-    height: calc((105 / 800) * 100vh);
+    height: calc((130 / 800) * 100vh);
     /* Permitimos que el contenedor de 'Destinatario único' y el de 'Múltiples destinatarios' 
     estén en forma de columna uno abajo del otro, y de paso permitimos que éstos contenedores
     hijos puedan utilizar propiedades de flex */
@@ -321,7 +321,7 @@ a menos que se le indique con content. Sin esto, el círculo interno no aparecer
     border: 0;
     /* Ubicamos el botón en su lugar correspondiente */
     position: absolute;
-    top: calc((315 / 800) * 100vh);
+    top: calc((240 / 800) * 100vh);
     left: calc((38 / 360) * 100vw);
     /* Diseño a la letra 'Siguiente' */
     font-family: "Lato", sans-serif;
@@ -337,4 +337,42 @@ a menos que se le indique con content. Sin esto, el círculo interno no aparecer
     background: #7e63b7;
     left: calc((32 / 360) * 100vw);
     cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------------------- */
+/* A partir de aquí tenemos el estilo de la segunda página de transferencia transfer2.html */
+
+ol.stepper {
+    /* Definimos las variables que luego usaremos con var(nombre-variable) */
+    --default-b: #D7D8DA; /* Color gris del stepper */
+    --default-c: #507CDD; /* Color azul del stepper */
+    --b: 5px; /* Grosor de la linea */
+    /* Esta configuracion nos permite tener cuantos steps nosotros querramos sin tener que ajustar la posicion de cada uno.
+    space-between va a hacer el trabajo por nosotros */
+    display: flex;
+    list-style: none; /* Quitamos los estilos por defecto que tienen las listas */
+    justify-content: space-between; /* Espaciamos los circulos */
+    align-self: center; /* Centramos el stepper horizontalmente */
+    margin-bottom: calc((30 / 800) * 100vh);
+    padding: 0; /* Quitamos los espacios internos por defecto */
+    margin-top: calc(7 / 800 * 100vh);
+}
+
+.step {
+    /* Creamos los circulos */
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--default-b); /* Color gris del stepper */
+    background-repeat: no-repeat; /* Para que no se repita las imágenes que exportaremos */
+    background-position: center; /* Centramos la imagen dentro del círculo */
+    background-size: 16px 16px; /* Tamaño fijo de la imagen */
+    background-image: url(../img/Stepper/more-horizontal.png);
+}
+
+.step1 {
+    background-color: var(--default-c);
+    /* La ruta es RELATIVA CON RESPECTO A DONDE ESTÁ EL ARCHIVO CSS transfer.css, por eso subimos vamos un directorio 'hacia atrás'.
+    Pisamos el valor anterior de la imagen que habíamos insertado en todos los steps (en .step)*/
+    background-image: url(../img/Stepper/edit.png);
 }
