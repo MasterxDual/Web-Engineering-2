@@ -321,7 +321,7 @@ a menos que se le indique con content. Sin esto, el círculo interno no aparecer
     border: 0;
     /* Ubicamos el botón en su lugar correspondiente */
     position: absolute;
-    top: calc((240 / 800) * 100vh);
+    top: calc((210 / 800) * 100vh);
     left: calc((38 / 360) * 100vw);
     /* Diseño a la letra 'Siguiente' */
     font-family: "Lato", sans-serif;
@@ -346,16 +346,30 @@ ol.stepper {
     /* Definimos las variables que luego usaremos con var(nombre-variable) */
     --default-b: #D7D8DA; /* Color gris del stepper */
     --default-c: #507CDD; /* Color azul del stepper */
-    --b: 5px; /* Grosor de la linea */
+    --b: 2px; /* Grosor de la linea */
+
     /* Esta configuracion nos permite tener cuantos steps nosotros querramos sin tener que ajustar la posicion de cada uno.
     space-between va a hacer el trabajo por nosotros */
     display: flex;
     list-style: none; /* Quitamos los estilos por defecto que tienen las listas */
     justify-content: space-between; /* Espaciamos los circulos */
     align-self: center; /* Centramos el stepper horizontalmente */
-    margin-bottom: calc((30 / 800) * 100vh);
     padding: 0; /* Quitamos los espacios internos por defecto */
-    margin-top: calc(7 / 800 * 100vh);
+    /* Top | Right | Down | Left */
+    margin: calc(15 / 800 * 100vh) 0 calc(35 / 800 * 100vh) 0;
+    width: calc(180 / 360 * 100vw); /* Definimos el ancho del stepper para que se dibuje la barra horizontal */
+    height: calc(25 / 800 * 100vh); /* Definimos el alto del stepper, de paso ésto nos define el grosor de la línea horizontal*/
+
+    /* Definimos la barra horizontal: crea un gradiente... pero con dos colores iguales en el mismo punto, lo que lo convierte en una línea sólida.
+    linear-gradient(color stop, color stop) 
+    var(--default-b) es el color.
+    0 0 significa que no hay transición: ambos "stops" son el mismo color en la misma posición. 
+    no-repeat: evita que el gradiente se repita como una textura de fondo. Sólo se dibuja una vez.*/
+    background: linear-gradient(var(--default-b) 0 0) no-repeat;
+    /* Horizontal | Vertical */
+    background-position: 50% 50%;
+    /* Ancho (que ocupe todo el ancho de su contenedor) | Alto (grosor de la barra) */
+    background-size: 100% var(--b); /* Definimos el tamaño de la barra horizontal */
 }
 
 .step {
@@ -375,4 +389,9 @@ ol.stepper {
     /* La ruta es RELATIVA CON RESPECTO A DONDE ESTÁ EL ARCHIVO CSS transfer.css, por eso subimos vamos un directorio 'hacia atrás'.
     Pisamos el valor anterior de la imagen que habíamos insertado en todos los steps (en .step)*/
     background-image: url(../img/Stepper/edit.png);
+}
+
+.step3 {
+    /* offset-x | offset-y | blur-radius | color */
+    box-shadow: 0px 4px 4px #00000040;
 }
