@@ -15,6 +15,13 @@ body.fade-in {
     opacity: 1;
 }
 
+body.fade-out {
+    /* Agregamos un efecto de fade-out cuando se redirige a la página de transferencia para que desaparezca lentamente 
+    toda la pantalla*/
+    opacity: 0;
+    transition: opacity 1.5s ease-out;
+}
+
 /* Con grid podemos establecer la estructura de nuestra pagina. Definiendo tres columnas en este caso, las primeras dos ocupan 2 fracciones de la pagina, y la tercera 1 fraccion */
 .container {
     display: grid;
