@@ -11,6 +11,15 @@ body {
     margin: 0;
     padding: 0;
     background-color: #FFFFFF;
+    /* Inicialmente la pantalla de transferencia está oculta, le agregamos efecto que dura 1 segundo para que aparezca con
+    ease-in-out */
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+/* La pantalla aparece */
+body.fade-in {
+    opacity: 1;
 }
 
 /* Definimos el tamaño responsive de mi header para que mis 4 imagenes se ubiquen acordemente */

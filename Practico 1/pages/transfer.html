@@ -66,12 +66,32 @@
                 </div>
                     <!-- Definimos el estilo de los dos botones cuando hacemos click en ellos -->
                     <script>
-                        // Seleccionamos todos los botones con la clase "button". Nos devuelve una lista
-                        let buttons = document.querySelectorAll(".button");
-                        /* Seleccionamos el primer hijo que tenga la clase .submit-btn */
-                        let submitBtn = document.querySelector(".submit-btn");
+                        window.addEventListener("DOMContentLoaded", () => {
+                            // Seleccionamos todos los botones con la clase "button". Nos devuelve una lista
+                            let buttons = document.querySelectorAll(".button");
+                            /* Seleccionamos el primer hijo que tenga la clase .submit-btn */
+                            let submitBtn = document.querySelector(".submit-btn");
 
-                        function toggleExclusiveButton(event) {
+                            setTimeout(() => {
+                                /* Le agregamos el efecto lento de entrada a la página del login */
+                                document.body.classList.add("fade-in");
+                            }, 1500); //Delay para mostrar la página del login
+
+
+                            /* Recorremos la lista de botones precargados y los recorremos uno por uno agregando el evento
+                            de hacer un click, aplicando la funcion toggleExclusiveButton() */
+                            buttons.forEach(button => {
+                                /* button.addEventListener("click", toggleExclusiveButton(event, buttons, submitBtn));
+                                está ejecutando toggleExclusiveButton(...) en el momento de agregar el listener, antes de que haya ningún clic, y además event ni siquiera existe todavía. 
+                                Con esto de abajo, la función toggleExclusiveButton se invoca solamente cuando ocurre un clic, y event es un objeto válido en ese contexto. */
+                                button.addEventListener("click", (event) => {
+                                    /* Llamamos a la función toggleExclusiveButton() que se encarga de activar el botón clickeado */
+                                    toggleExclusiveButton(event, buttons, submitBtn);   
+                                });
+                            });
+                        });
+
+                        function toggleExclusiveButton(event, buttons, submitBtn) {
                             /* event es el objeto del evento que se genera automáticamente cuando ocurre una interacción con el DOM, como un clic (click), teclado (keydown), etc.*/
                             /* event.currentTarget: el elemento que escucha el evento (el botón completo en este caso). Es el elemento al que se le asignó el evento. */
                             const clickedButton = event.currentTarget;
@@ -96,29 +116,7 @@
                             
                             /* Ahora activamos el botón de Continuar si encontró algún botón circular clickeado */
                             submitBtn.disabled = !someActiveButton;
-
-                            /* Toda esta funcionalidad era activar los botones, permitiendo que se activen uno o ambos a la vez
-                            Esto no tiene sentido, solo se debe permitir que un boton circular esté activado a la vez */
-                            /* Si el elemento tiene la clase 'active' agregada -> La elimina
-                            Si el elemento no tiene la clase 'active' agregada -> La agrega */
-                            // this.classList.toggle("active");
-
-                            /* Con Array.from() convertimos el NodeList 'buttons' en un array para poder usar el método some()
-                            some(callback) recorre el array y devuelve true si al menos un boton está activo  */
-                            // let someActiveButton = Array.from(buttons).some(button => button.classList.contains("active"));
-
-                            /* Si hay algún botón activo => eliminamos o agregamos la clase 'selected' si es que no está o está respectivamente */
-                            // submitBtn.classList.toggle("selected", someActiveButton);
-                            
-                            // Deshabilitamos el botón si no hay ninguno activo
-                            // submitBtn.disabled = !someActiveButton; 
                         }
-
-                        /* Recorremos la lista de botones precargados y los recorremos uno por uno agregando el evento
-                        de hacer un click, aplicando la funcion toggleButton() */
-                        buttons.forEach(button => {
-                            button.addEventListener("click", toggleExclusiveButton);
-                        });
                     </script>
             </section>
         </main>
