@@ -1,5 +1,6 @@
-body {
+body.fade-in {
     opacity: 1;
+    transition: opacity 1s ease-in-out;
 }
 
 .destiny-container h2 {
