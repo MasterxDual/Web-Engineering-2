@@ -71,6 +71,8 @@
                             let buttons = document.querySelectorAll(".button");
                             /* Seleccionamos el primer hijo que tenga la clase .submit-btn */
                             let submitBtn = document.querySelector(".submit-btn");
+                            /* Último botón circular clickeado */
+                            let lastButtonSelected = null;
 
                             setTimeout(() => {
                                 /* Le agregamos el efecto lento de entrada a la página del login */
@@ -86,20 +88,20 @@
                                 Con esto de abajo, la función toggleExclusiveButton se invoca solamente cuando ocurre un clic, y event es un objeto válido en ese contexto. */
                                 button.addEventListener("click", (event) => {
                                     /* Llamamos a la función toggleExclusiveButton() que se encarga de activar el botón clickeado */
-                                    let lastButtonSelected = toggleExclusiveButton(event, buttons, submitBtn);   
+                                    lastButtonSelected = toggleExclusiveButton(event, buttons, submitBtn);   
                                 });
                             });
 
+                            /* Una vez que el botón de submit se puede clickear => se verifica cual botón circular fue clickeado para enviar
+                            a Destinatario único o Múltiples destinatarios */
                             submitBtn.addEventListener("click", () => {
-                                if(lastButtonSelected.classList.contains("active")) {
-                                if(lastButtonSelected.id === "btn1") {
+                                if(lastButtonSelected.id == "btn1") {   
                                     /* Cambia a la página de transferencia única */
                                     window.location.href = "/Practico 1/pages/transfer2.html";
-                                } else if(lastButtonSelected.id === "btn2") {
+                                } else if(lastButtonSelected.id == "btn2") {
                                     /* Cambia a la página de transferencia múltiple */
-                                    
+                                    window.location.href = "/Practico 1/pages/transfermultiple.html";
                                 }
-                            } 
                             });
                         });
 
