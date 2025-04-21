@@ -22,6 +22,14 @@ body.fade-in {
     opacity: 1;
 }
 
+body.fade-out {
+    /* Agregamos un efecto de fade-out cuando se redirige a la página de destinatario único
+    o múltiples destinatarios para que desaparezca lentamente 
+    toda la pantalla*/
+    opacity: 0;
+    transition: opacity 1.5s ease-out;
+}
+
 /* Definimos el tamaño responsive de mi header para que mis 4 imagenes se ubiquen acordemente */
 header {
     width: 100vw;

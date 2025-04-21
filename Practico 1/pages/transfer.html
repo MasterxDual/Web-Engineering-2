@@ -96,11 +96,23 @@
                             a Destinatario único o Múltiples destinatarios */
                             submitBtn.addEventListener("click", () => {
                                 if(lastButtonSelected.id == "btn1") {   
-                                    /* Cambia a la página de transferencia única */
-                                    window.location.href = "/Practico 1/pages/transfer2.html";
+                                    setTimeout(() => {
+                                        /* Agregamos el efecto de fade-out al body para que desaparezca lentamente */
+                                        document.body.classList.add("fade-out");
+                                        setTimeout(() => {
+                                            /* Cambia a la página de transferencia única */
+                                            window.location.href = "/Practico 1/pages/transfer2.html";
+                                        }, 1000);
+                                    }, 1500); //Este tiempo debe ser mayor al 1000 así esperamos correctamente antes de redirigir
                                 } else if(lastButtonSelected.id == "btn2") {
-                                    /* Cambia a la página de transferencia múltiple */
-                                    window.location.href = "/Practico 1/pages/transfermultiple.html";
+                                    setTimeout(() => {
+                                        /* Agregamos el efecto de fade-out al body para que desaparezca lentamente */
+                                        document.body.classList.add("fade-out");
+                                        setTimeout(() => {
+                                            /* Cambia a la página de transferencia múltiple */
+                                            window.location.href = "/Practico 1/pages/transfermultiple.html";
+                                        }, 1000); 
+                                    }, 1500); //Este tiempo debe ser mayor al 1000 así esperamos correctamente antes de redirigir
                                 }
                             });
                         });
