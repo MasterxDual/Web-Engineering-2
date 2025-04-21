@@ -86,8 +86,20 @@
                                 Con esto de abajo, la función toggleExclusiveButton se invoca solamente cuando ocurre un clic, y event es un objeto válido en ese contexto. */
                                 button.addEventListener("click", (event) => {
                                     /* Llamamos a la función toggleExclusiveButton() que se encarga de activar el botón clickeado */
-                                    toggleExclusiveButton(event, buttons, submitBtn);   
+                                    let lastButtonSelected = toggleExclusiveButton(event, buttons, submitBtn);   
                                 });
+                            });
+
+                            submitBtn.addEventListener("click", () => {
+                                if(lastButtonSelected.classList.contains("active")) {
+                                if(lastButtonSelected.id === "btn1") {
+                                    /* Cambia a la página de transferencia única */
+                                    window.location.href = "/Practico 1/pages/transfer2.html";
+                                } else if(lastButtonSelected.id === "btn2") {
+                                    /* Cambia a la página de transferencia múltiple */
+                                    
+                                }
+                            } 
                             });
                         });
 
@@ -116,6 +128,8 @@
                             
                             /* Ahora activamos el botón de Continuar si encontró algún botón circular clickeado */
                             submitBtn.disabled = !someActiveButton;
+
+                            return clickedButton;
                         }
                     </script>
             </section>
