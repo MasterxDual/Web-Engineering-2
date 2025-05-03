@@ -7,7 +7,7 @@ app.use(express.json()); // Middleware para parsear el cuerpo de las solicitudes
 const { sequelize, Item } = require('./models');
 
 //Sincronizar las tablas con la base de datos
-sequelize.sync({ force: false }) // Cambiar a true si quieres eliminar y volver a crear las tablas
+sequelize.sync({ force: false }) // Cambiar a true si queres eliminar y volver a crear las tablas
     .then(() => {
         console.log('Conectado a la base de datos y tablas sincronizadas');
         // Inicia el servidor en el puerto 3000
