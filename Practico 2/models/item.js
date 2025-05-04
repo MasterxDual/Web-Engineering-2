@@ -1,5 +1,16 @@
+/*Define el modelo Sequelize llamado Item, y se encarga de estructurar cómo se verá
+la tabla items en tu base de datos PostgreSQL
+Este archivo:
+Define una clase Item que extiende de Sequelize.Model.
+Utiliza init() para declarar los campos de la tabla.
+Exporta una función que registra el modelo con la instancia de Sequelize que llega desde models/index.js.*/
+
 'use strict';
-const { Model } = require('sequelize');
+const { Model } = require('sequelize'); //Activa el modo estricto y extrae la clase Model de Sequelize, que vas a extender.
+/* Aquí estás exportando una función que define y registra el modelo.
+Item hereda de Model de Sequelize.
+El método associate(models) queda disponible para definir relaciones con otros modelos más adelante
+ (por ejemplo, Item.belongsTo(User) si lo necesitás en el futuro). */
 module.exports = (sequelize, DataTypes) => {
   class Item extends Model {
     /**
@@ -8,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      // Aquí se pueden definir relaciones si las hay
     }
   }
   Item.init({
@@ -30,9 +41,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false, // Hacemos que el monto sea obligatorio
     }
   }, {
-    sequelize,
-    modelName: 'Item',
-    tableName: 'items',
+    sequelize, //Se pasa la instancia de conexión.
+    modelName: 'Item', 
+    tableName: 'items', //La tabla se llamará items explícitamente (sin pluralización automática).
   });
-  return Item;
+  return Item; //Devuelve el modelo definido, que luego será recogido automáticamente por models/index.js y agregado al objeto db.
 };
